@@ -58,7 +58,7 @@ const FeaturedPosts = () =>  {
         const timeoutId = setTimeout(() => controller.abort(), 20000); // 20 seconds timeout
 
         try {
-            const response = await fetch('http://localhost:3000/api/featured-posts', {
+            const response = await fetch('http://localhost:3000/api/v1/blogs/featured-posts', {
                 signal: controller.signal
             });
 
