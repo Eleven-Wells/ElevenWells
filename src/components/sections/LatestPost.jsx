@@ -1,0 +1,190 @@
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { BsWifiOff } from 'react-icons/bs';
+import { BiRefresh } from 'react-icons/bi';
+import { BlogCard, ShimmerCard } from '../ui/Card.jsx';
+
+// Reusable Connection Failed Component
+export const ConnectionFailed = ({ onRetry, isRetrying, message }) => (
+    <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.9 }}
+        className="flex flex-col items-center justify-center py-20"
+    >
+        <motion.div
+            animate={{ 
+                rotate: [0, -10, 10, -10, 0],
+            }}
+            transition={{ 
+                duration: 0.5,
+                repeat: isRetrying ? Infinity : 0,
+                repeatDelay: 0.5 
+            }}
+        >
+            <BsWifiOff className="text-gray-400 text-6xl mb-4" />
+        </motion.div>
+        
+        <h3 className="text-xl font-bold text-gray-900 mb-2">Connection Failed</h3>
+        <p className="text-gray-600 text-sm mb-6 text-center max-w-md">
+            {message || 'Unable to connect to the server. Please check your connection.'}
+        </p>
+        
+        <motion.button
+            onClick={onRetry}
+            disabled={isRetrying}
+            className="flex items-center gap-2 bg-green-800 hover:bg-green-900 text-white px-6 py-3 rounded-full font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+        >
+            <BiRefresh className={`text-xl ${isRetrying ? 'animate-spin' : ''}`} />
+            {isRetrying ? 'Retrying...' : 'Retry Connection'}
+        </motion.button>
+    </motion.div>
+);
+
+// Main Featured Posts Section
+const LatestPost = () =>  {
+    const [posts, setPosts] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [hasError, setHasError] = useState(false);
+    const [isRetrying, setIsRetrying] = useState(false);
+
+    const fetchPosts = async () => {
+        setIsLoading(true);
+        setHasError(false);
+
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 20000); // 20 seconds timeout
+
+        try {
+            const response = await fetch('http://localhost:3000/api/featured-posts', {
+                signal: controller.signal
+            });
+
+            clearTimeout(timeoutId);
+
+            if (!response.ok) {
+                throw new Error('Failed to fetch posts');
+            }
+
+            const data = await response.json();
+            setPosts(data.posts);
+            setIsLoading(false);
+        } catch (error) {
+            clearTimeout(timeoutId);
+            console.error('Error fetching posts:', error);
+            setHasError(true);
+            setIsLoading(false);
+            
+            // Auto retry after 5 seconds
+            setTimeout(() => {
+                if (hasError) {
+                    handleRetry();
+                }
+            }, 5000);
+        }
+    };
+
+    const handleRetry = () => {
+        setIsRetrying(true);
+        fetchPosts().finally(() => {
+            setIsRetrying(false);
+        });
+    };
+
+    useEffect(() => {
+        fetchPosts();
+    }, []);
+
+    return (
+        <section className="py-16 px-4 bg-gray-50">
+            <div className="max-w-7xl mx-auto">
+                {/* Header */}
+                <motion.div 
+                    className="text-center mb-12"
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                >
+                    <h2 className="text-4xl font-bold text-gray-900 mb-3">Latest Posts</h2>
+                    <p className="text-gray-600 max-w-2xl mx-auto">
+                        Discover our newest stories packed with fresh ideas, insights, and inspiration for curious minds
+                    </p>
+                </motion.div>
+
+                {/* Content */}
+                <AnimatePresence mode="wait">
+                    {isLoading ? (
+                        <motion.div
+                            key="loading"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                        >
+                            {[...Array(6)].map((_, index) => (
+                                <ShimmerCard key={index} />
+                            ))}
+                        </motion.div>
+                    ) : hasError ? (
+                        <motion.div key="error">
+                            <ConnectionFailed 
+                                onRetry={handleRetry} 
+                                isRetrying={isRetrying}
+                                message="Unable to load featured posts. Please check your connection and try again."
+                            />
+                        </motion.div>
+                    ) : (
+                        <motion.div
+                            key="content"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                        >
+                            {posts.map((post, index) => (
+                                <motion.div
+                                    key={post.id}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                                >
+                                    <BlogCard 
+                                        image={post.image}
+                                        title={post.title}
+                                        description={post.description}
+                                        date={post.date}
+                                        link={post.link}
+                                        category={post.category}
+                                        // isLoading={false}
+                                    />
+                                </motion.div>
+                            ))}
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+
+                {/* See More Button */}
+                {!isLoading && !hasError && posts.length > 0 && (
+                    <motion.div 
+                        className="text-center mt-12"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.8 }}
+                    >
+                        <motion.button
+                            className="bg-white border-2 border-green-800 text-green-800 hover:bg-green-800 hover:text-white px-8 py-3 rounded-full font-semibold transition-colors"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                        >
+                            See More
+                        </motion.button>
+                    </motion.div>
+                )}
+            </div>
+        </section>
+    );
+}
+
+export default LatestPost
