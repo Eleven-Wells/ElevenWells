@@ -12,11 +12,27 @@ const App = () => {
   return (
     <div>
       <Navigation />
-      <Home />
-      <Discover />
-      <FeaturedPosts />
-      <LatestPost />
-      <Contact />
+
+      <section id="home">
+        <Home />
+      </section>
+
+      <section id="discover">
+        <Discover />
+      </section>
+
+      <section id="featured">
+        <FeaturedPosts />
+      </section>
+
+      <section id="latest">
+        <LatestPost />
+      </section>
+
+      <section id="contact">
+        <Contact />
+      </section>
+
       <Footer />
     </div>
   )

@@ -2,7 +2,7 @@ import React from 'react';
 
 const Images = () => {
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto pt-0 pb-4 px-4 md:p-4">
       {/* Desktop View - Static Grid */}
       <div className="hidden lg:grid grid-cols-5 gap-3 max-w-6xl mx-auto" style={{ height: '70vh' }}>
         
@@ -22,7 +22,7 @@ const Images = () => {
         </div>
 
         {/* Column 3: Normal image (slightly shorter) */}
-        <div className="rounded-2xl overflow-hidden mt-60 " style={{ alignSelf: 'center', height: '50%' }}>
+        <div className="rounded-2xl overflow-hidden mt-60" style={{ alignSelf: 'center', height: '50%' }}>
           <img src="/img5.jpg" alt="Cyclists" className="w-full h-full object-cover" />
         </div>
 
@@ -59,10 +59,10 @@ const Images = () => {
           }
         `}</style>
         
-        <div className="overflow-hidden w-full" style={{ height: '90vh' }}>
+        <div className="overflow-hidden w-full" style={{ height: '55vh' }}>
           <div className="scroll-container flex gap-3" style={{ width: '300%' }}>
             {/* First set of images */}
-            <div className="grid grid-cols-5 gap-3 flex-shrink-0" style={{ width: '50%', height: '100%' }}>
+            <div className="grid grid-cols-5 gap-3 shrink-0" style={{ width: '50%', height: '100%' }}>
               
               {/* Column 1 */}
               <div className="flex flex-col gap-3">
@@ -80,7 +80,7 @@ const Images = () => {
               </div>
 
               {/* Column 3 */}
-              <div className="rounded-2xl overflow-hidden mt-50" style={{ alignSelf: 'center', height: '50%' }}>
+              <div className="rounded-2xl overflow-hidden mt-40" style={{ alignSelf: 'center', height: '50%' }}>
                 <img src="/img5.jpg" alt="Cyclists" className="w-full h-full object-cover" />
               </div>
 
@@ -101,7 +101,7 @@ const Images = () => {
             </div>
 
             {/* Duplicate set for seamless loop */}
-            <div className="grid grid-cols-5 gap-3 flex-shrink-0" style={{ width: '50%', height: '100%' }}>
+            <div className="grid grid-cols-5 gap-3 shrink-0" style={{ width: '50%', height: '100%' }}>
               
               {/* Column 1 */}
               <div className="flex flex-col gap-3">
@@ -119,7 +119,7 @@ const Images = () => {
               </div>
 
               {/* Column 3 */}
-              <div className="rounded-2xl overflow-hidden mt-50" style={{ alignSelf: 'center', height: '50%' }}>
+              <div className="rounded-2xl overflow-hidden mt-40" style={{ alignSelf: 'center', height: '50%' }}>
                 <img src="/img5.jpg" alt="Cyclists" className="w-full h-full object-cover" />
               </div>
 
