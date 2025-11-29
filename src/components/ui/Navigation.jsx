@@ -11,7 +11,7 @@ export default function Navigation() {
                 <div className="flex justify-between items-center h-16">
                     {/* Logo */}
                     <div className="shrink-0">
-                        <span className="text-xl font-bold text-gray-900">LUMEBLOG.</span>
+                        <span className="text-xl font-bold text-green-800">LUMEBLOG.</span>
                     </div>
 
                     {/* Desktop Navigation Links */}
