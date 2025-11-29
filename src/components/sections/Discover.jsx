@@ -1,158 +1,112 @@
-import React from 'react'
-import { FiChevronRight } from "react-icons/fi";
+import React from "react";
+import { FiChevronRight, FiCompass, FiBook, FiUsers, FiShare2, FiBookOpen, FiAward, FiCoffee, FiTrendingUp, FiLayers } from "react-icons/fi";
 import { FaFire } from "react-icons/fa";
-import {
-  FiBookOpen,
-  FiAward,
-  FiCoffee,
-  FiTrendingUp,
-  FiLayers,
-} from "react-icons/fi";
-import { FiCompass, FiBook, FiUsers, FiShare2 } from "react-icons/fi";
-
+import { motion } from "framer-motion";
 
 const categories = [
-  {
-    title: "Popular",
-    description: "Top picks and fan favorites of the week",
-    icon: <FaFire size={22} />,
-  },
-  {
-    title: "Design",
-    description: "UI/UX principles, visual design, and creative inspiration",
-    icon: <FiAward size={22} />,
-  },
-  {
-    title: "Technology",
-    description: "Work–life balance, wellness, and personal growth",
-    icon: <FiCoffee size={22} />,
-  },
-  {
-    title: "Stories",
-    description: "Personal experiences, case studies, and insights",
-    icon: <FiBookOpen size={22} />,
-  },
-  {
-    title: "Productivity",
-    description: "Trends, tools, and innovations shaping the future",
-    icon: <FiLayers size={22} />,
-  },
-  {
-    title: "Business",
-    description: "Growth strategies, marketing, and entrepreneurship",
-    icon: <FiTrendingUp size={22} />,
-  },
+  { title: "Popular", description: "Top picks and fan favorites of the week", icon: <FaFire size={22} /> },
+  { title: "Design", description: "UI/UX principles, visual design, and creative inspiration", icon: <FiAward size={22} /> },
+  { title: "Technology", description: "Work–life balance, wellness, and personal growth", icon: <FiCoffee size={22} /> },
+  { title: "Stories", description: "Personal experiences, case studies, and insights", icon: <FiBookOpen size={22} /> },
+  { title: "Productivity", description: "Trends, tools, and innovations shaping the future", icon: <FiLayers size={22} /> },
+  { title: "Business", description: "Growth strategies, marketing, and entrepreneurship", icon: <FiTrendingUp size={22} /> },
 ];
 
 const steps = [
-  {
-    icon: <FiCompass size={40} />,
-    title: "Explore Topics",
-    description:
-      "Browse through categories like design, tech, and lifestyle to find content that inspires you.",
-  },
-  {
-    icon: <FiBook size={40} />,
-    title: "Read & Learn",
-    description:
-      "Enjoy valuable insights from experienced writers and passionate creators.",
-  },
-  {
-    icon: <FiUsers size={40} />,
-    title: "Join the Community",
-    description:
-      "Subscribe or create an account to get updates, save favorites, and interact with others.",
-  },
-  {
-    icon: <FiShare2 size={40} />,
-    title: "Share Your Story",
-    description:
-      "Contribute your own posts and let your voice reach a wider audience.",
-  },
+  { icon: <FiCompass size={40} />, title: "Explore Topics", description: "Browse through categories like design, tech, and lifestyle to find content that inspires you." },
+  { icon: <FiBook size={40} />, title: "Read & Learn", description: "Enjoy valuable insights from experienced writers and passionate creators." },
+  { icon: <FiUsers size={40} />, title: "Join the Community", description: "Subscribe or create an account to get updates, save favorites, and interact with others." },
+  { icon: <FiShare2 size={40} />, title: "Share Your Story", description: "Contribute your own posts and let your voice reach a wider audience." },
 ];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
+const staggerContainer = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.15 } },
+};
 
 const Discover = () => {
   return (
-      <div>
-          {/* Inspire Section */}
-      <section className="w-full py-16  px-6 mt-18">
+    <div>
+      {/* Inspire Section */}
+      <section className="w-full pt-2 pb-15 md:pt-16 md:pb-16 px-4 md:px-6 md:mt-16">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-semibold text-center text-gray-800 mb-3">
+          <motion.h2
+            className="text-4xl font-semibold text-center text-gray-800 mb-3"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             Find What Inspires You
-          </h2>
+          </motion.h2>
 
-          <p className="text-center text-gray-600 max-w-2xl mx-auto mb-14">
+          <motion.p
+            className="text-center text-gray-600 max-w-2xl mx-auto mb-14"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             Discover insightful articles across design, technology, lifestyle,
             and productivity. Join our community of curious minds.
-          </p>
+          </motion.p>
 
           {/* Category Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             {categories.map((item, index) => (
-              <div
+              <motion.div
                 key={index}
                 className="bg-white border border-gray-200 rounded-xl p-6 hover:border-green-500 hover:shadow-xl shadow-lg transition-all duration-300 group"
+                variants={fadeUp}
               >
-                {/* Header with icon and arrow */}
                 <div className="flex items-start justify-between mb-4">
                   <div className="text-green-700">{item.icon}</div>
-                  <FiChevronRight
-                    className="text-gray-400 group-hover:text-green-700 transition-colors"
-                    size={22}
-                  />
+                  <FiChevronRight className="text-gray-400 group-hover:text-green-700 transition-colors" size={22} />
                 </div>
-
-                {/* Text content */}
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                  {item.title}
-                </h3>
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">{item.title}</h3>
                 <p className="text-sm text-gray-500">{item.description}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
-              {/* How it works Section */}
-              <section className="w-full py-16 px-6 bg-linear-to-b from-slate-50 to-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-semibold text-slate-800 mb-4">
-              How it works
-            </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Discover how our blog makes it easy for you to explore, learn, and
-              share ideas that matter
-            </p>
+
+        {/* How it works Section */}
+        <section className="w-full py-16 px-6 bg-slate-50 mt-15">
+          <div className="max-w-6xl mx-auto">
+            <motion.div className="text-center mb-16" variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+              <motion.h2 className="text-4xl md:text-5xl font-semibold text-slate-800 mb-4" variants={fadeUp}>
+                How it works
+              </motion.h2>
+              <motion.p className="text-lg text-slate-600 max-w-2xl mx-auto" variants={fadeUp}>
+                Discover how our blog makes it easy for you to explore, learn, and share ideas that matter
+              </motion.p>
+            </motion.div>
+
+            <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-15" variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+              {steps.map((step, index) => (
+                <motion.div key={index} className="flex flex-col items-center text-center" variants={fadeUp}>
+                  <div className="text-green-700 mb-6 p-4 rounded-full bg-slate-100 hover:bg-slate-200 transition-colors">{step.icon}</div>
+                  <h3 className="text-xl font-semibold text-green-800 mb-3">{step.title}</h3>
+                  <p className="text-slate-500 text-sm leading-relaxed font-semibold">{step.description}</p>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
-
-          {/* Steps Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {steps.map((step, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-center text-center"
-              >
-                {/* Icon */}
-                <div className="text-green-700 mb-6 p-4 rounded-full bg-slate-100 hover:bg-slate-200 transition-colors">
-                  {step.icon}
-                </div>
-
-                {/* Title */}
-                <h3 className="text-xl font-semibold text-green-800 mb-3">
-                  {step.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-slate-500 text-sm leading-relaxed font-semibold">
-                  {step.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
+        </section>
       </section>
-      </section> 
     </div>
-  )
-}
+  );
+};
 
-export default Discover
+export default Discover;

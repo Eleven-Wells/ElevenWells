@@ -1,39 +1,64 @@
 import React, { useState } from "react";
 import { FiMail } from "react-icons/fi";
 import { PiShootingStar } from "react-icons/pi";
+import { motion } from "framer-motion";
 
 const StayInLoop = () => {
   const [email, setEmail] = useState("");
 
   const handleSubscribe = () => {
-    // Handle subscription logic here
     console.log("Subscribing:", email);
     setEmail("");
   };
 
+  const fadeUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  };
+
+  const staggerContainer = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.15 } },
+  };
+
   return (
-    <section className="w-full py-20 px-6 bg-linear-to-b from-slate-100 to-slate-50">
-      <div className="max-w-2xl mx-auto text-center">
+    <section className="w-full py-20 px-6 bg-gradient-to-b from-slate-100 to-slate-50">
+      <motion.div
+        className="max-w-2xl mx-auto text-center"
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
         {/* Star Icon */}
-        <div className="flex justify-center mb-3">
+        <motion.div className="flex justify-center mb-3" variants={fadeUp}>
           <div className="bg-green-800 rounded-xl p-3 text-white">
             <PiShootingStar size={28} />
           </div>
-        </div>
+        </motion.div>
 
         {/* Heading */}
-        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+        <motion.h2
+          className="text-4xl md:text-5xl font-bold text-slate-900 mb-6"
+          variants={fadeUp}
+        >
           Stay in the loop
-        </h2>
+        </motion.h2>
 
         {/* Description */}
-        <p className="text-lg text-slate-600 mb-10 leading-relaxed">
+        <motion.p
+          className="text-lg text-slate-600 mb-10 leading-relaxed"
+          variants={fadeUp}
+        >
           Get weekly updates, exclusive insights, and fresh content delivered
           straight to your inbox. Join our growing community of readers.
-        </p>
+        </motion.p>
 
         {/* Email Subscription */}
-        <div className="flex flex-col sm:flex-row gap-3 mb-4">
+        <motion.div
+          className="flex flex-col sm:flex-row gap-3 mb-4"
+          variants={fadeUp}
+        >
           <div className="flex-1 relative">
             <FiMail
               className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400"
@@ -45,46 +70,51 @@ const StayInLoop = () => {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               required
-              className="w-full pl-12 pr-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:border-green-800 focus:ring-1 focus:ring-green-800 shadow-xl "
+              className="w-full pl-12 pr-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:border-green-800 focus:ring-1 focus:ring-green-800 shadow-xl"
             />
           </div>
-          <button
+          <motion.button
             onClick={handleSubscribe}
             className="bg-green-800 hover:bg-green-900 text-white px-8 py-3 rounded-xl font-semibold transition-colors whitespace-nowrap shadow-lg"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             Join the list
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
 
         {/* Disclaimer */}
-        <p className="text-sm text-slate-500 mb-12">
+        <motion.p className="text-sm text-slate-500 mb-12" variants={fadeUp}>
           No spam, ever. Unsubscribe anytime.
-        </p>
+        </motion.p>
 
         {/* Subscribers Count */}
-        <div className="flex items-center justify-center gap-4">
+        <motion.div className="flex items-center justify-center gap-4" variants={fadeUp}>
           <div className="flex -space-x-3">
-            <img 
-              src="/pro1.jpg" 
-              alt="Subscriber 1" 
-              className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-md" 
+            <motion.img
+              src="/pro1.jpg"
+              alt="Subscriber 1"
+              className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-md"
+              variants={fadeUp}
             />
-            <img 
-              src="/pro2.jpg" 
-              alt="Subscriber 2" 
-              className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-md" 
+            <motion.img
+              src="/pro2.jpg"
+              alt="Subscriber 2"
+              className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-md"
+              variants={fadeUp}
             />
-            <img 
-              src="/pro3.jpg" 
-              alt="Subscriber 3" 
-              className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-md" 
+            <motion.img
+              src="/pro3.jpg"
+              alt="Subscriber 3"
+              className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-md"
+              variants={fadeUp}
             />
           </div>
-          <p className="text-slate-600 text-sm font-medium">
+          <motion.p className="text-slate-600 text-sm font-medium" variants={fadeUp}>
             Join 1,000+ subscribers
-          </p>
-        </div>
-      </div>
+          </motion.p>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
