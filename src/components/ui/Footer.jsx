@@ -27,7 +27,7 @@ export default function Footer() {
     };
 
     return (
-        <footer className="bg-gradient-to-br from-green-800 to-green-700 text-white py-12 px-6">
+        <footer className="bg-linear-to-br from-green-800 to-green-700 text-white py-12 px-6">
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-6 gap-8">
                     {/* Brand Section */}
