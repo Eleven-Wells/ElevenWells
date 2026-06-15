@@ -1,0 +1,78 @@
+.wwa {
+  background-color: #faf9f7;
+  padding: 6rem 2rem;
+}
+
+.wwa__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* ─── Left ───────────────────────────────────────────── */
+.wwa__left {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.wwa__heading {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.2;
+}
+
+.wwa__avatars {
+  display: flex;
+  align-items: center;
+}
+
+.wwa__avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: #c8c8c8;
+  border: 2px solid #faf9f7;
+  margin-left: -10px;
+}
+
+.wwa__avatar:first-child {
+  margin-left: 0;
+}
+
+/* ─── Right ──────────────────────────────────────────── */
+.wwa__card {
+  background-color: #ffffff;
+  border-radius: 4px;
+  padding: 2.5rem;
+}
+
+.wwa__card p {
+  font-size: 0.92rem;
+  line-height: 1.85;
+  color: #3a3a3a;
+}
+
+/* ─── Responsive ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  .wwa {
+    padding: 4rem 1.5rem;
+  }
+
+  .wwa__inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .wwa__heading {
+    font-size: 1.6rem;
+  }
+
+  .wwa__card {
+    padding: 1.8rem;
+  }
+}
