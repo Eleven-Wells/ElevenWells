@@ -1,15 +1,15 @@
-import Header from './Components/Header/Header'
-import Hero from './Components/Hero/Hero'
-import WhoWeAre from './components/WhoWeAre/WhoWeAre'
-import './App.css'
+import React from 'react'
+import Header from './Components/Header'
+import Hero from './Components/Hero'
+import WhatWeAre from './Components/WhoWeAre'
 
-function App() {
+const App = () => {
   return (
-    <>
+    <div>
       <Header />
-      <Hero/>
-      <WhoWeAre />
-    </>
+      <Hero />
+      <WhatWeAre />
+    </div>
   )
 }
 
