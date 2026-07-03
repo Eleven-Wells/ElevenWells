@@ -1,15 +1,13 @@
-import React from 'react'
-import Header from './Components/Header'
-import Hero from './Components/Hero'
-import WhatWeAre from './Components/WhoWeAre'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
 
-const App = () => {
+function App() {
   return (
-    <div>
-      <Header />
-      <Hero />
-      <WhatWeAre />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
