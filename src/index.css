@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700;800&display=swap');
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -10,7 +12,16 @@ body {
   font-family: 'Inter', 'Segoe UI', sans-serif;
   min-height: 100vh;
 }
-
+.txt {
+  font-family: "Abhaya Libre", serif;
+  font-weight: 500;
+  font-style: normal;
+}
+.txtx {
+  font-family: "Abhaya Libre", serif;
+  font-weight: 900;
+  font-style: normal;
+}
 #root {
   min-height: 100vh;
   display: flex;
