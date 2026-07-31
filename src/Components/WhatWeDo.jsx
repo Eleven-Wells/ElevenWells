@@ -1,6 +1,6 @@
 import React from 'react'
 import SectionFrame from './SectionFrame';
-import { capabilities } from './capabilities';
+import { capabilities } from './Capabilities';
 
 const Tag = ({ text }) => {
   return (
