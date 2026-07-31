@@ -29,7 +29,7 @@ const Navbar = () => {
      initial={{ y: -80 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.8 }}
-    className="fixed top-0 left-0 w-full z-50">
+    className="fixed top-0 left-0 w-full z-50 ">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
 
         <div className="flex justify-between items-start py-6">
@@ -38,7 +38,7 @@ const Navbar = () => {
 
           <div className="hidden lg:flex flex-col space-y-2">
 
-            <h2 className="font-black tracking-wider">
+            <h2 className="font-black tracking-wider text-2xl">
               ELEVENWELLS
             </h2>
 
@@ -64,15 +64,24 @@ const Navbar = () => {
           {/* Desktop Button */}
 
           
-            <button className="hidden lg:flex bg-white rounded-xl px-4 py-2 items-center gap-3 hover:scale-105 transition txtx">
+            <button
+  className="group relative hidden lg:flex items-center overflow-hidden rounded-xl border border-white bg-white px-4 py-2 txtx transition-all duration-500"
+>
+  {/* Expanding black background */}
+  <span
+    className="absolute right-2 top-1/2 h-7 w-7 -translate-y-1/2 rounded-lg bg-black transition-all duration-500 ease-in-out group-hover:left-0 group-hover:right-0 group-hover:h-full group-hover:w-full group-hover:rounded-xl"
+  />
 
-              Get In Touch
+  {/* Text */}
+  <span className="relative z-10 pr-4 text-black transition-colors duration-300 group-hover:text-white">
+    Get In Touch
+  </span>
 
-              <span className="bg-black text-white rounded-lg w-7 h-7 flex items-center justify-center">
-                <FaAngleRight />
-              </span>
-
-            </button>
+  {/* Arrow */}
+  <span className="relative z-20 flex h-7 w-7 items-center justify-center rounded-lg bg-black text-white">
+    <FaAngleRight />
+  </span>
+</button>
 
           {/* Mobile Menu */}
 
