@@ -8,7 +8,6 @@ import EcosystemSection from '../Components/EcosystemSection'
 const Home = () => {
   return (
     <>
-      <Navbar />
       <main>
         <Hero />
         <WhatWeDo />

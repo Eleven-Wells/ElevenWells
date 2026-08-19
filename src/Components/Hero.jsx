@@ -7,11 +7,13 @@ import member3 from "../assets/member3.jpg";
 import member4 from "../assets/member4.jpg";
 import member5 from "../assets/member5.jpg";
 import member6 from "../assets/member6.jpg";
+import Navbar from "./Navbar";
 
 const Hero = () => {
   return (
     <>
       <section className="relative h-screen overflow-hidden">
+        <Navbar />
         <img
           src={organizationPhoto}
           alt=""
@@ -28,7 +30,7 @@ const Hero = () => {
               transition={{
                 duration: 1,
               }}
-              className="text-black font-serif text-4xl leading-tight md:text-6xl lg:text-5xl txt"
+              className="text-black text-4xl leading-tight md:text-6xl lg:text-5xl txt"
             >
               A modern collective building products, opportunities and
               sustainable digital value.
@@ -41,7 +43,7 @@ const Hero = () => {
                 delay: 0.3,
                 duration: 1,
               }}
-              className="mx-auto mt-10 max-w-2xl text-lg leading-relaxed text-gray-200 md:text-xl txtx"
+              className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-gray-200 md:text-2xl txtx"
             >
               We bring together creative and technical talent to design, build
               and launch products that solve problems, create value and shape

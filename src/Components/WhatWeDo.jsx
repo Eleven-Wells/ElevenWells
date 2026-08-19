@@ -16,7 +16,10 @@ const WhatWeDo = () => {
   );
 
   return (
-    <section className="bg-[#07070a] text-white px-6 py-15 md:px-12 lg:px-15">
+    <section
+      id="what-we-do"
+      className="bg-[#07070a] text-white px-6 py-15 md:px-12 lg:px-15"
+    >
       <div className="max-w-7xl mx-auto">
         {/* Wireframe wrapper */}
         <div className="relative border-2 border-r border-white/50">

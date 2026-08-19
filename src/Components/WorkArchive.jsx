@@ -1,8 +1,11 @@
-import React from 'react';
+import React from "react";
 
 const WorkArchive = () => {
   return (
-    <section className="min-h-screen bg-[#F5F3EF] px-6 py-16 md:px-20 md:py-24 font-sans flex flex-col items-center">
+    <section
+      id="work-archive"
+      className="min-h-screen bg-[#F5F3EF] px-6 py-16 md:px-20 md:py-24 font-sans flex flex-col items-center"
+    >
       {/* Header */}
       <div className="text-center mb-12">
         <h1 className="text-[2.6rem] md:text-[3.2rem] font-serif text-[#2D2D2D] mb-5 tracking-tight leading-none">
@@ -11,14 +14,15 @@ const WorkArchive = () => {
         <p className="text-[#6B6B6B] text-[1.05rem] max-w-2xl mx-auto leading-[1.6]">
           A selection of products, concepts, and digital experiences
           <br className="hidden md:block" />
-          we've designed and built through collaboration, creativity, and execution.
+          we've designed and built through collaboration, creativity, and
+          execution.
         </p>
       </div>
 
       {/* Main Card - significantly larger */}
       <div
         className="w-full max-w-[1200px] rounded-[2.5rem] overflow-hidden shadow-2xl flex flex-col md:flex-row"
-        style={{ minHeight: '680px' }}
+        style={{ minHeight: "680px" }}
       >
         {/* Left Panel */}
         <div className="md:w-[35%] relative flex flex-col justify-between p-12 md:p-16 overflow-hidden">
@@ -27,7 +31,7 @@ const WorkArchive = () => {
             className="absolute inset-0"
             style={{
               background:
-                'linear-gradient(170deg, #6B3030 0%, #4A2020 25%, #2A1515 55%, #0F0A0A 100%)',
+                "linear-gradient(170deg, #6B3030 0%, #4A2020 25%, #2A1515 55%, #0F0A0A 100%)",
             }}
           />
           <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#8B4545]/30 to-transparent pointer-events-none" />
@@ -91,7 +95,7 @@ const WorkArchive = () => {
           <div className="flex items-center justify-between px-10 pt-8 pb-4">
             <span
               className="text-[#8B4545] font-bold text-[1.15rem] tracking-[0.1em]"
-              style={{ fontFamily: 'Georgia, serif' }}
+              style={{ fontFamily: "Georgia, serif" }}
             >
               NOOK
             </span>
