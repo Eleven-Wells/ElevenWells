@@ -53,7 +53,7 @@ const Hero = () => {
         </div>
       </section>
 
-      <section className="bg-[#f5f1e6] py-24 lg:py-36">
+      <section id="about-us" className="bg-[#f5f1e6] py-24 lg:py-36">
         <div className="mx-auto max-w-7xl px-10">
           {/* Main Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
