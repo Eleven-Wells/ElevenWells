@@ -1,5 +1,5 @@
 import React from "react";
-import FeaturedProjectCard from "../components/FeaturedProjectCard";
+import FeaturedProjectCard from "../Components/FeaturedProjectCard";
 
 const WorkArchive = () => {
   return (
