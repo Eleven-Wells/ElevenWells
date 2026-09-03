@@ -1,15 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 import organizationPhoto from "../assets/organization-photo.jpg";
-import member1 from "../assets/member1.jpg";
-import member2 from "../assets/member2.jpg";
-import member3 from "../assets/member3.jpg";
-import member4 from "../assets/member4.jpg";
-import member5 from "../assets/member5.jpg";
-import member6 from "../assets/member6.jpg";
 import Navbar from "./Navbar";
+import ProductsShowcase from "./ProductsShowcase";
+import { usePortfolio } from "../context/PortfolioContext";
+import { getTeamAvatar } from "../utils/portfolioFallbacks";
 
 const Hero = () => {
+  const { team, loading } = usePortfolio();
+
   return (
     <>
       <section className="relative h-screen overflow-hidden">
@@ -65,16 +64,24 @@ const Hero = () => {
 
               {/* Team */}
               <div className="mt-10 flex -space-x-4">
-                {[member1, member2, member3, member4, member5, member6].map(
-                  (member, index) => (
-                    <img
+                {loading &&
+                  Array.from({ length: 4 }).map((_, index) => (
+                    <div
                       key={index}
-                      src={member}
-                      alt=""
+                      className="h-14 w-14 animate-pulse rounded-full border-2 border-white bg-gray-300/70"
+                    />
+                  ))}
+
+                {!loading &&
+                  team.map((member, index) => (
+                    <img
+                      key={`${member.name}-${index}`}
+                      src={getTeamAvatar(member, index)}
+                      alt={member.name}
+                      title={member.role ? `${member.name} — ${member.role}` : member.name}
                       className="h-14 w-14 rounded-full border-2 border-white object-cover"
                     />
-                  ),
-                )}
+                  ))}
               </div>
             </div>
 
@@ -106,11 +113,7 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Bottom Divider */}
-
-          <div className="mt-24 border-t border-gray-400"></div>
-          <h2 className="zen text-4xl py-8 px-20">PAIDINK</h2>
-          <div className=" border-t border-gray-400"></div>
+          <ProductsShowcase />
         </div>
       </section>
     </>
