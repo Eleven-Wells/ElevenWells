@@ -15,7 +15,7 @@ const Hero = () => {
         <Navbar />
         <img
           src={organizationPhoto}
-          alt=""
+          alt="Eleven Wells collective team workspace"
           className="absolute inset-0 h-full w-full object-cover"
         />
 
