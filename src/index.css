@@ -19,3 +19,22 @@ html{
   font-weight: 400;
   font-style: normal;
 }
+
+@keyframes products-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.products-marquee {
+  animation: products-marquee 45s linear infinite;
+}
+
+@media (max-width: 640px) {
+  .products-marquee {
+    animation-duration: 35s;
+  }
+}

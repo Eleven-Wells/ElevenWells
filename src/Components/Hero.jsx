@@ -8,6 +8,7 @@ import member4 from "../assets/member4.jpg";
 import member5 from "../assets/member5.jpg";
 import member6 from "../assets/member6.jpg";
 import Navbar from "./Navbar";
+import ProductsShowcase from "./ProductsShowcase";
 
 const Hero = () => {
   return (
@@ -106,11 +107,7 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Bottom Divider */}
-
-          <div className="mt-24 border-t border-gray-400"></div>
-          <h2 className="zen text-4xl py-8 px-20">PAIDINK</h2>
-          <div className=" border-t border-gray-400"></div>
+          <ProductsShowcase />
         </div>
       </section>
     </>
