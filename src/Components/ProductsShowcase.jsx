@@ -1,17 +1,11 @@
 import React from "react";
-
-const products = [
-  {
-    id: "paidink",
-    name: "PAIDINK",
-    tagline: "Read. Write. Engage.",
-    href: "#work-archive",
-  },
-  // We can be adding more products below here as they launch
-];
+import { usePortfolio } from "../context/PortfolioContext";
 
 const MarqueeTrack = ({ items, ariaHidden = false }) => (
-  <div className="flex shrink-0 items-center" aria-hidden={ariaHidden || undefined}>
+  <div
+    className="flex shrink-0 items-center"
+    aria-hidden={ariaHidden || undefined}
+  >
     {items.map((product, index) => (
       <React.Fragment key={`${product.id}-${index}`}>
         <a
@@ -37,6 +31,25 @@ const MarqueeTrack = ({ items, ariaHidden = false }) => (
 );
 
 const ProductsShowcase = () => {
+  const { products, loading } = usePortfolio();
+
+  if (loading) {
+    return (
+      <div className="mt-16 md:mt-24">
+        <div className="border-t border-gray-400" />
+        <div className="py-8 md:py-12">
+          <div className="mb-6 h-8 w-48 animate-pulse rounded bg-gray-300/60 md:mb-8" />
+          <div className="h-14 animate-pulse rounded bg-gray-300/40" />
+        </div>
+        <div className="border-t border-gray-400" />
+      </div>
+    );
+  }
+
+  if (products.length === 0) {
+    return null;
+  }
+
   const trackItems =
     products.length < 3
       ? Array.from({ length: 3 }, (_, i) => products[i % products.length])
@@ -63,7 +76,7 @@ const ProductsShowcase = () => {
 
           <div className="products-marquee flex w-max hover:[animation-play-state:paused]">
             <MarqueeTrack items={trackItems} />
-            <MarqueeTrack items={trackItems} aria-hidden="true" />
+            <MarqueeTrack items={trackItems} ariaHidden />
           </div>
         </div>
 
